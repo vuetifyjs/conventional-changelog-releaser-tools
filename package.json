@@ -1,44 +1,52 @@
 {
+  "name": "conventional-github-releaser",
+  "version": "3.1.5",
   "author": {
-    "name": "Hutson Betts",
-    "email": "hutson@hyper-expanse.net",
-    "url": "https://gitlab.com/hutson"
+    "name": "Steve Mao",
+    "email": "maochenyan@gmail.com",
+    "url": "https://github.com/stevemao"
   },
-  "bin": "",
-  "bugs": "https://github.com/conventional-changelog/releaser-tools/issues",
-  "description": "Release tools built on conventional-changelog.",
+  "description": "Make a new GitHub release from git metadata.",
   "engines": {
     "node": ">=6.9.0"
   },
-  "files": [],
-  "homepage": "https://github.com/conventional-changelog/releaser-tools#readme",
-  "keywords": [],
-  "license": "MIT",
-  "main": "",
-  "name": "releaser-tools",
-  "private": true,
-  "renovate": {
-    "extends": [
-      "config:base",
-      ":maintainLockFilesWeekly",
-      ":rebaseStalePrs",
-      ":automergeDigest",
-      ":gitSignOff",
-      ":preserveSemverRanges"
-    ]
-  },
+  "files": ["src/"],
+  "homepage": "https://github.com/conventional-changelog/releaser-tools",
+  "bugs": "https://github.com/conventional-changelog/releaser-tools/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/conventional-changelog/releaser-tools.git"
   },
+  "keywords": [
+    "conventional-github-releaser",
+    "github",
+    "release",
+    "releases",
+    "conventional-changelog",
+    "conventional",
+    "changelog",
+    "log"
+  ],
+  "license": "MIT",
+  "bin": "./src/cli.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "docker run --rm --user node -v \"$(pwd)\":/app -w /app -it node:4 sh -c \"npm test; npm test; bash\"",
-    "postinstall": "lerna bootstrap",
-    "release": "lerna publish --conventional-commits -m 'chore(release): publish'",
-    "test": "lerna exec npm test"
+    "test": "eslint --fix src/ && nyc --all --cache --include=src/ --exclude=src/cli.js --exclude=src/**/*.spec.js --exclude=src/**/*.mocks.js --reporter=lcov --reporter=text mocha --check-leaks --full-trace --globals __core-js_shared__,__coverage__,YamlEscaper --inline-diffs --no-exit --recursive --reporter=progress --retries 1 src/**/*.spec.js"
   },
-  "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "conventional-changelog": "^5.0.0",
+    "dateformat": "^5.0.0",
+    "debug": "^4.0.0",
+    "gh-got": "^10.0.0",
+    "git-semver-tags": "^7.0.0",
+    "lodash.merge": "^4.0.2",
+    "meow": "^12.0.0",
+    "object-assign": "^4.0.1",
+    "q": "^1.4.1",
+    "semver": "^7.0.0",
+    "semver-regex": "^4.0.0",
+    "through2": "^4.0.0"
+  },
   "devDependencies": {
     "chai": "^4.0.2",
     "codecov": "^3.0.0",
