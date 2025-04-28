@@ -10,7 +10,9 @@
   "engines": {
     "node": ">=6.9.0"
   },
-  "files": ["src/"],
+  "files": [
+    "src/"
+  ],
   "homepage": "https://github.com/vuetifyjs/conventional-changelog-releaser-tools",
   "bugs": "https://github.com/vuetifyjs/conventional-changelog-releaser-tools",
   "repository": {
@@ -31,7 +33,8 @@
   "bin": "./src/cli.js",
   "main": "src/index.js",
   "scripts": {
-    "test": "eslint --fix src/ && nyc --all --cache --include=src/ --exclude=src/cli.js --exclude=src/**/*.spec.js --exclude=src/**/*.mocks.js --reporter=lcov --reporter=text mocha --check-leaks --full-trace --globals __core-js_shared__,__coverage__,YamlEscaper --inline-diffs --no-exit --recursive --reporter=progress --retries 1 src/**/*.spec.js"
+    "lint": "eslint src",
+    "test": "vitest"
   },
   "dependencies": {
     "conventional-changelog": "^5.0.0",
@@ -48,18 +51,14 @@
     "through2": "^4.0.0"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
-    "codecov": "^3.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-standard": "^17.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
     "eslint-config-xo-space": "^0.34.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "lerna": "^7.0.0",
-    "mocha": "^10.0.0",
-    "nyc": "^15.0.0"
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.17.0",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "vitest": "^3.1.2"
   },
   "packageManager": "pnpm@10.10.0"
 }

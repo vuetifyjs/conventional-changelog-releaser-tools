@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-expressions */
 
 const chai = require('chai')
-const mocha = require(`mocha`)
+const mocha = require('mocha')
 const transform = require('./transform')
 
 const expect = chai.expect
@@ -34,7 +34,7 @@ describe('transform', function () {
   beforeEach(function () {
     this.chunk = {
       committerDate: 'June 8, 2012',
-      gitTags: ''
+      gitTags: '',
     }
   })
 

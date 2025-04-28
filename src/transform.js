@@ -1,7 +1,7 @@
 'use strict'
 
-var dateFormat = require('dateformat')
-var semverRegex = require('semver-regex')
+const dateFormat = require('dateformat')
+const semverRegex = require('semver-regex')
 
 function transform (chunk, cb) {
   if (typeof chunk.gitTags === 'string') {

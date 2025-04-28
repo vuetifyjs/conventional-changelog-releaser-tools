@@ -1,3 +1,8 @@
 {
-  "extends": "standard"
+  "extends": "standard",
+  "plugins": ["n"],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "n/prefer-node-protocol": "error"
+  }
 }

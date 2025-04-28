@@ -2,7 +2,7 @@
 
 const assign = require('object-assign')
 const conventionalChangelog = require('conventional-changelog')
-const debug = require(`debug`)(`conventional-github-releaser`)
+const debug = require('debug')('conventional-github-releaser')
 const gitSemverTags = require('git-semver-tags')
 const ghGot = require('gh-got')
 const merge = require('lodash.merge')
@@ -38,8 +38,8 @@ function conventionalGithubReleaser (auth, changelogOpts, context, gitRawCommits
   writerOpts = changelogArgs[4]
 
   changelogOpts = merge({
-    transform: transform,
-    releaseCount: 1
+    transform,
+    releaseCount: 1,
   }, changelogOpts)
 
   writerOpts.includeDetails = true
@@ -57,7 +57,7 @@ function conventionalGithubReleaser (auth, changelogOpts, context, gitRawCommits
       const releaseCount = changelogOpts.releaseCount
       if (releaseCount !== 0) {
         gitRawCommitsOpts = assign({
-          from: tags[releaseCount]
+          from: tags[releaseCount],
         }, gitRawCommitsOpts)
       }
 
@@ -82,8 +82,8 @@ function conventionalGithubReleaser (auth, changelogOpts, context, gitRawCommits
               name: changelogOpts.name || chunk.keyCommit.version,
               prerelease: semver.parse(chunk.keyCommit.version).prerelease.length > 0,
               tag_name: chunk.keyCommit.version,
-              target_commitish: changelogOpts.targetCommitish
-            }
+              target_commitish: changelogOpts.targetCommitish,
+            },
           }
           debug(`posting %o to the following URL - ${url}`, options)
 

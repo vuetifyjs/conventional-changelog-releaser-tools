@@ -4,7 +4,7 @@
 
 const meow = require('meow')
 const conventionalGithubReleaser = require('./index')
-const resolve = require('path').resolve
+const resolve = require('node:path').resolve
 
 const cli = meow({
   help: `
@@ -43,45 +43,45 @@ const cli = meow({
     url: {
       alias: 'u',
       default: process.env.CONVENTIONAL_GITHUB_URL || 'https://api.github.com/',
-      type: 'string'
+      type: 'string',
     },
     token: {
       alias: 't',
       default: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
-      type: 'string'
+      type: 'string',
     },
     preset: {
       alias: 'p',
-      type: 'string'
+      type: 'string',
     },
     pkg: {
       alias: 'k',
-      type: 'string'
+      type: 'string',
     },
     releaseCount: {
       alias: 'r',
       default: 1,
-      type: 'number'
+      type: 'number',
     },
     verbose: {
       alias: 'v',
       default: false,
-      type: 'boolean'
+      type: 'boolean',
     },
     config: {
       alias: 'n',
-      type: 'string'
+      type: 'string',
     },
     context: {
       alias: 'c',
-      type: 'string'
+      type: 'string',
     },
     draft: {
       alias: 'd',
       default: false,
-      type: 'boolean'
-    }
-  }
+      type: 'boolean',
+    },
+  },
 })
 
 let config = {}
@@ -120,10 +120,10 @@ try {
 const changelogOpts = {
   preset: flags.preset,
   pkg: {
-    path: flags.pkg
+    path: flags.pkg,
   },
   releaseCount: flags.releaseCount,
-  draft: flags.draft
+  draft: flags.draft,
 }
 
 if (flags.verbose) {
@@ -133,7 +133,7 @@ if (flags.verbose) {
 
 conventionalGithubReleaser({
   url: flags.url,
-  token: flags.token
+  token: flags.token,
 }, changelogOpts, templateContext, gitRawCommitsOpts, parserOpts, writerOpts, function (err, data) {
   if (err) {
     console.error(err.toString())
