@@ -1,5 +1,5 @@
 {
-  "name": "conventional-github-releaser",
+  "name": "@vuetify/github-releaser",
   "version": "3.1.5",
   "author": {
     "name": "Steve Mao",
@@ -11,11 +11,11 @@
     "node": ">=6.9.0"
   },
   "files": ["src/"],
-  "homepage": "https://github.com/conventional-changelog/releaser-tools",
-  "bugs": "https://github.com/conventional-changelog/releaser-tools/issues",
+  "homepage": "https://github.com/vuetifyjs/conventional-changelog-releaser-tools",
+  "bugs": "https://github.com/vuetifyjs/conventional-changelog-releaser-tools",
   "repository": {
     "type": "git",
-    "url": "https://github.com/conventional-changelog/releaser-tools.git"
+    "url": "https://github.com/vuetifyjs/conventional-changelog-releaser-tools.git"
   },
   "keywords": [
     "conventional-github-releaser",
