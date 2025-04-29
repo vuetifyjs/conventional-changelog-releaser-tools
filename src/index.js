@@ -52,7 +52,9 @@ export async function conventionalGithubReleaser (
     throw err
   })
 
-  const octokit = new Octokit()
+  const octokit = new Octokit({
+    auth: auth.token,
+  })
   return await pipeline(
     stream,
     async function * (source) {
