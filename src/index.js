@@ -4,6 +4,7 @@ import _debug from 'debug'
 import gitSemverTags from 'git-semver-tags'
 import semver from 'semver'
 import { Octokit } from '@octokit/rest'
+import mergeConfig from './merge-config.js'
 
 const debug = _debug('conventional-github-releaser')
 
@@ -45,6 +46,13 @@ export async function conventionalGithubReleaser (
   }
 
   gitRawCommitsOpts.to = gitRawCommitsOpts.to || tags[0]
+
+  const config = await mergeConfig(changelogOpts, context, gitRawCommitsOpts, parserOpts, writerOpts)
+  changelogOpts = config.options
+  context = config.context
+  gitRawCommitsOpts = config.gitRawCommitsOpts
+  parserOpts = config.parserOpts
+  writerOpts = config.writerOpts
 
   const stream = conventionalChangelog(changelogOpts, context, gitRawCommitsOpts, parserOpts, writerOpts)
 

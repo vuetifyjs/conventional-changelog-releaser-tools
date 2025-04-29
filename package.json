@@ -42,14 +42,17 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@hutson/parse-repository-url": "^5.0.0",
     "@octokit/rest": "^21.1.1",
     "conventional-changelog": "^6.0.0",
     "dateformat": "^5.0.0",
     "debug": "^4.0.0",
     "gh-got": "^10.0.0",
     "git-semver-tags": "^7.0.1",
+    "hosted-git-info": "^7.0.0",
     "meow": "^12.1.1",
-    "semver": "^7.0.0",
+    "normalize-package-data": "^6.0.0",
+    "semver": "^7.7.1",
     "semver-regex": "^4.0.0"
   },
   "devDependencies": {

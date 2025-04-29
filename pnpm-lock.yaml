@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hutson/parse-repository-url':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@octokit/rest':
         specifier: ^21.1.1
         version: 21.1.1
@@ -26,11 +29,17 @@ importers:
       git-semver-tags:
         specifier: ^7.0.1
         version: 7.0.1
+      hosted-git-info:
+        specifier: ^7.0.0
+        version: 7.0.2
       meow:
         specifier: ^12.1.1
         version: 12.1.1
+      normalize-package-data:
+        specifier: ^6.0.0
+        version: 6.0.2
       semver:
-        specifier: ^7.0.0
+        specifier: ^7.7.1
         version: 7.7.1
       semver-regex:
         specifier: ^4.0.0
