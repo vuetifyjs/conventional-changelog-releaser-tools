@@ -1,5 +1,8 @@
 {
   "name": "@vuetify/github-releaser",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "3.1.5",
   "author": {
     "name": "Steve Mao",
@@ -7,8 +10,9 @@
     "url": "https://github.com/stevemao"
   },
   "description": "Make a new GitHub release from git metadata.",
+  "type": "module",
   "engines": {
-    "node": ">=6.9.0"
+    "node": ">=22.0.0"
   },
   "files": [
     "src/"
@@ -33,32 +37,28 @@
   "bin": "./src/cli.js",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src",
-    "test": "vitest"
+    "lint": "eslint src"
   },
   "dependencies": {
-    "conventional-changelog": "^5.0.0",
+    "@octokit/rest": "^21.1.1",
+    "conventional-changelog": "^6.0.0",
     "dateformat": "^5.0.0",
     "debug": "^4.0.0",
     "gh-got": "^10.0.0",
-    "git-semver-tags": "^7.0.0",
-    "lodash.merge": "^4.0.2",
-    "meow": "^12.0.0",
-    "object-assign": "^4.0.1",
-    "q": "^1.4.1",
+    "git-semver-tags": "^7.0.1",
+    "meow": "^12.1.1",
     "semver": "^7.0.0",
-    "semver-regex": "^4.0.0",
-    "through2": "^4.0.0"
+    "semver-regex": "^4.0.0"
   },
   "devDependencies": {
+    "conventional-changelog-vuetify": "^2.0.2",
     "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-config-xo-space": "^0.34.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-promise": "^6.6.0",
-    "eslint-plugin-standard": "^4.1.0",
-    "vitest": "^3.1.2"
+    "eslint-plugin-standard": "^4.1.0"
   },
   "packageManager": "pnpm@10.10.0"
 }

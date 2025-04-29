@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-
-'use strict'
-
-const meow = require('meow')
-const conventionalGithubReleaser = require('./index')
-const resolve = require('node:path').resolve
+import { resolve } from 'node:path'
+import process from 'node:process'
+import meow from 'meow'
+import { conventionalGithubReleaser } from './index.js'
 
 const cli = meow({
   help: `
@@ -41,47 +39,48 @@ const cli = meow({
   `,
   flags: {
     url: {
-      alias: 'u',
+      shortFlag: 'u',
       default: process.env.CONVENTIONAL_GITHUB_URL || 'https://api.github.com/',
       type: 'string',
     },
     token: {
-      alias: 't',
-      default: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
+      shortFlag: 't',
+      default: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN || '',
       type: 'string',
     },
     preset: {
-      alias: 'p',
+      shortFlag: 'p',
       type: 'string',
     },
     pkg: {
-      alias: 'k',
+      shortFlag: 'k',
       type: 'string',
     },
     releaseCount: {
-      alias: 'r',
+      shortFlag: 'r',
       default: 1,
       type: 'number',
     },
     verbose: {
-      alias: 'v',
+      shortFlag: 'v',
       default: false,
       type: 'boolean',
     },
     config: {
-      alias: 'n',
+      shortFlag: 'n',
       type: 'string',
     },
     context: {
-      alias: 'c',
+      shortFlag: 'c',
       type: 'string',
     },
     draft: {
-      alias: 'd',
+      shortFlag: 'd',
       default: false,
       type: 'boolean',
     },
   },
+  importMeta: import.meta,
 })
 
 let config = {}
@@ -94,11 +93,11 @@ let writerOpts
 
 try {
   if (flags.context) {
-    templateContext = require(resolve(process.cwd(), flags.context))
+    templateContext = await import(resolve(process.cwd(), flags.context))
   }
 
   if (flags.config) {
-    config = require(resolve(process.cwd(), flags.config))
+    config = await import(resolve(process.cwd(), flags.config))
   }
 
   if (config.gitRawCommitsOpts) {
@@ -134,13 +133,4 @@ if (flags.verbose) {
 conventionalGithubReleaser({
   url: flags.url,
   token: flags.token,
-}, changelogOpts, templateContext, gitRawCommitsOpts, parserOpts, writerOpts, function (err, data) {
-  if (err) {
-    console.error(err.toString())
-    process.exit(1)
-  }
-
-  if (flags.verbose) {
-    console.log(data)
-  }
-})
+}, changelogOpts, templateContext, gitRawCommitsOpts, parserOpts, writerOpts)
