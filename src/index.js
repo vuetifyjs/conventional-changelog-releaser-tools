@@ -72,6 +72,10 @@ export async function conventionalGithubReleaser (
           continue
         }
 
+        if (!chunk.keyCommit.version.startsWith('v')) {
+          chunk.keyCommit.version = 'v' + chunk.keyCommit.version
+        }
+
         const options = {
           owner: context.owner,
           repo: context.repository,
